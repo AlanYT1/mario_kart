@@ -10,7 +10,6 @@ public class Corredor extends Thread {
     public Corredor(String nombre, int velocidad, Vehiculo vehiculo) {
         this.nombre = nombre;
         this.velocidad = velocidad;
-        this.vehiculo = vehiculo;
         this.distancia = 0;
     }
 
@@ -24,6 +23,10 @@ public class Corredor extends Thread {
                 Thread.sleep(500);
             } catch (InterruptedException e) {}
         }
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
     Random r = new Random();
