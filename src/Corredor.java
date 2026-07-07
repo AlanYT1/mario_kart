@@ -4,7 +4,7 @@ public class Corredor extends Thread {
     private String nombre;
     private int velocidad;
     private Vehiculo vehiculo;
-    private int distancia;
+    private double distancia;
     private boolean termino = false;
 
     public Corredor(String nombre, int velocidad, Vehiculo vehiculo) {
