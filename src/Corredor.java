@@ -22,7 +22,11 @@ public class Corredor extends Thread {
                 avanzar();
                 caida();
                 boost();
-
+                System.out.println("Corredor " + this.nombre);
+                System.out.println("Distancia: " + distancia);
+                if (distancia >= pista.getDistancia() && vuelta > pista.getVuelta()){
+                    termino = true;
+                }
                 Thread.sleep(500);
             } catch (InterruptedException e) {}
         }
