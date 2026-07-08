@@ -1,19 +1,22 @@
 import java.util.Random;
 
+
 public class Corredor extends Thread {
     private String nombre;
     private int velocidad;
     private Vehiculo vehiculo;
     private double distancia;
     private boolean termino = false;
+    private Corredores corredores;
 
-    public Corredor(String nombre, int velocidad, Vehiculo vehiculo) {
-        this.nombre = nombre;
-        this.velocidad = velocidad;
-        this.distancia = 0;
+    public Corredor(Corredores corredores, Vehiculo vehiculo) {
+        this.corredores = corredores;
+        this.nombre = corredores.getNombre();
+        this.velocidad = corredores.getVelocidad();
+        this.vehiculo = vehiculo;
     }
 
-    public void iniciarcarrera() {
+    public void run() {
         while (!termino) {
             try {
                 avanzar();
@@ -32,7 +35,7 @@ public class Corredor extends Thread {
     Random r = new Random();
 
     public void avanzar(){
-        double velocidadfinal = velocidad - (vehiculo.getPeso() * 3);
+        double velocidadfinal = velocidad - ((vehiculo.getPeso() + corredores.getPeso()) * 3);
         distancia += velocidadfinal;
 
     }
@@ -48,7 +51,7 @@ public class Corredor extends Thread {
     }
 
     public void boost(){
-        double porcentaje = vehiculo.getDrift() - 10;
+        double porcentaje = (vehiculo.getDrift() + corredores.getDrift()) - 10;
         if (porcentaje > 0) {
             porcentaje = porcentaje * 0.05f;
             if(r.nextInt(100)<porcentaje){

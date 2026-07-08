@@ -1,46 +1,44 @@
+static Corredores corredores;
+static Vehiculo vehiculo;
+
 void main() {
     Scanner sc = new Scanner(System.in);
-    int option;
-    do {
-        System.out.println("Mario Kart");
-        System.out.println("1. crear corredor");
-        System.out.println("2. crear kart");
-        System.out.println("3. elegir rival");
-        System.out.println("4. elegir pista");
-        System.out.println("5. iniciar carrera");
-        System.out.println("6. salir");
-        option = sc.nextInt();
+    crearcorredor(sc);
+    crearkart(sc);
+    elegirrival(sc);
+    elegirpista(sc);
+    iniciarcarrera();
+}
 
-        switch(option){
-            case 1:
-                crearcorredor(sc);
-                break;
-            case 2:
-                crearkart(sc);
-                break;
-            case 3:
-                elegirrival(sc);
-                break;
-            case 4:
-                elegirpista(sc);
-                break;
-            case 5:
-                iniciarcarrera();
-                break;
-            case 6:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Opcion invalida");
-                break;
-        }
+public static void crearcorredor(Scanner sc) {
 
+    System.out.println("Ingrese que corredor desea");
+    System.out.println("1. Mario \n 2. Luigi \n 3. Toad \n 4. Peach \n 5. Bowser \n 6. Yoshi");
+    int opcion = sc.nextInt();
 
-    }while(option != 6);
+    switch (opcion) {
+        case 1:
+            corredores = new Corredores("Mario", 30, 3, 2);
+            break;
+        case 2:
+            corredores = new Corredores("Luigi", 33,2, 2);
+            break;
+        case 3:
+            corredores = new Corredores("Toad", 37,3, 1);
+            break;
+        case 4:
+            corredores = new Corredores("Peach", 33,2, 2);
+            break;
+        case 5:
+            corredores = new Corredores("Bowser", 23,5,3);
+            break;
+        case 6:
+            corredores = new Corredores("Yoshi", 35,3,2);
+            break;
+    }
 }
 
 public static void crearkart(Scanner sc) {
-    Vehiculo vehiculo = null;
 
     System.out.println("Tipo de vehiculo \n 1. Auto \n 2. Moto");
     int opt = sc.nextInt();
@@ -81,4 +79,17 @@ public static void crearkart(Scanner sc) {
             vehiculo.setChasis(new Chasis(2,2,0));
             break;
     }
+}
+
+public static void elegirrival(Scanner sc) {
+
+}
+
+public static void elegirpista(Scanner sc) {
+
+}
+
+public static void iniciarcarrera() {
+    Corredor corredor = new Corredor(corredores, vehiculo);
+    corredor.start();
 }
