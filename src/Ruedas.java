@@ -3,7 +3,7 @@ public class Ruedas {
     private int peso;
     private int drift;
 
-    public Ruedas(int estabilidad, int peso, int drift){
+    public Ruedas(int estabilidad, int peso, int drift) {
         this.estabilidad = estabilidad;
         this.peso = peso;
         this.drift = drift;

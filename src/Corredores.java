@@ -26,5 +26,4 @@ public class Corredores {
     public int getPeso() {
         return peso;
     }
-
 }

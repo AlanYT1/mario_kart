@@ -3,7 +3,7 @@ public class Chasis {
     private int peso;
     private int drift;
 
-    public Chasis(int estabilidad, int peso, int drift){
+    public Chasis(int estabilidad, int peso, int drift) {
         this.estabilidad = estabilidad;
         this.peso = peso;
         this.drift = drift;
